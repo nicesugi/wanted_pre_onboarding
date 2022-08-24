@@ -30,7 +30,7 @@ class Position(models.Model):
 class Recruitment(models.Model):
     corporation = models.ForeignKey(Corporation, verbose_name='회사', on_delete=models.CASCADE)
     position = models.ForeignKey(Position, verbose_name='채용포지션', on_delete=models.SET_NULL, null=True)
-    tech_stack = models.ManyToManyField(TechStack, verbose_name='기술스택', related_name='stacks')
+    tech_stack = models.ForeignKey(TechStack, verbose_name='기술스택', on_delete=models.SET_NULL, null=True)
     recompense = models.IntegerField('채용보상금')
     content = models.TextField('채용내용')
     def __str__(self):
